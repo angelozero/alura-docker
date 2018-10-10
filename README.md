@@ -142,6 +142,7 @@
     ```
 
 **EXEMPLO: Gerando um arquivo no container e salvando na sua area de trabalho**
+
     ```java
         
         // docker run -it -v "/home/CIT/angelof/workspace/docker/angelo/alura-docker/files-container/:/var/www/" ubuntu
