@@ -170,5 +170,9 @@
         // Se no terminal você ja estiver na pasta da aplicação, você pode substituir o caminho da pasta por " $(pwd) "
         - docker run -d -p 8080:3000 -v "$(pwd):/var/www/" -w "/var/www/"  node npm start
     ```
+---
+
+### Criando um Dockerfile
 
 
+---
