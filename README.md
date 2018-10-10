@@ -28,12 +28,12 @@
 
 - Para executar o mesmo docker ja executado
     ```java
-        docker start 05025384675e(ID da imagem)
+        docker start 05025384675e( ID da imagem )
     ```
 
 - Para parar o docker em execução
     ```java
-        docker stop 05025384675e(ID da imagem)
+        docker stop 05025384675e( ID da imagem )
     ```
 
 - Flags: -a, de attach, para integrar os terminais, e -i, de interactive, para interagirmos com o terminal:
@@ -41,3 +41,22 @@
         sudo docker start -a -i 05025384675e
     ```
 
+- Remover um container por ID
+    ```java
+        docker rm 05025384675e ( ID do container )
+    ```
+
+- Remover todos os containers
+    ```java
+        docker container prune
+    ```
+
+- Visualizar todas as imagens
+    ```java
+        docker images
+    ```
+
+- Remover uma imagem especifica 
+    ```java
+        docker rmi hello-world ( nome do REPOSITORY )
+    ```
