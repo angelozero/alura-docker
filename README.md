@@ -4,39 +4,40 @@
 
 
 ### Comandos
-    - Verificar os containers que estão sendo executados no momento:
+- Verificar os containers que estão sendo executados no momento:
 
     ```java
         docker ps
     ```
 
-    - Para ver todos containers executados:
+- Para ver todos containers executados:
     ```java
         docker ps -a
     ```
 
-    (Usando uma imagem do Ubuntu)
-    - Para usar o terminal do sistema operacional
+(Usando uma imagem do Ubuntu)
+- Para usar o terminal do sistema operacional
     ```java
         docker run -it ubuntu
     ```
 
-    - Para sair da execução do docker
+- Para sair da execução do docker
     ```java
         CTRL + D
     ```
 
-    - Para executar o mesmo docker ja executado
+- Para executar o mesmo docker ja executado
     ```java
         docker start 05025384675e(ID da imagem)
     ```
 
-    - Para parar o docker em execução
+- Para parar o docker em execução
     ```java
         docker stop 05025384675e(ID da imagem)
     ```
 
-    - Flags: -a, de attach, para integrar os terminais, e -i, de interactive, para interagirmos com o terminal:
+- Flags: -a, de attach, para integrar os terminais, e -i, de interactive, para interagirmos com o terminal:
     ```java
         sudo docker start -a -i 05025384675e
     ```
+
