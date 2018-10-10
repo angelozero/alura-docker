@@ -130,18 +130,18 @@
 ---
 
 ### Criando um Container, trabalhando com volumes e usando o Docker Host
-    - Quando escrevemos em um container, assim que ele for removido, os dados também serão. Mas podemos criar um local especial dentro dele, e especificamos que esse local será o nosso volume de dados. Quando criamos um volume de dados, o que estamos fazendo é apontá-lo para uma pequena pasta no Docker Host. Então, quando criamos um volume, criamos uma pasta dentro do container, e o que escrevermos dentro dessa pasta na verdade estaremos escrevendo do Docker Host. Isso faz com que não percamos os nossos dados, pois o container até pode ser removido, mas a pasta no Docker Host ficará intacta.
+- Quando escrevemos em um container, assim que ele for removido, os dados também serão. Mas podemos criar um local especial dentro dele, e especificamos que esse local será o nosso volume de dados. Quando criamos um volume de dados, o que estamos fazendo é apontá-lo para uma pequena pasta no Docker Host. Então, quando criamos um volume, criamos uma pasta dentro do container, e o que escrevermos dentro dessa pasta na verdade estaremos escrevendo do Docker Host. Isso faz com que não percamos os nossos dados, pois o container até pode ser removido, mas a pasta no Docker Host ficará intacta.
 
-    - Para usar o Docker Host, no Terminal crie um container com o docker run, mas dessa vez utilize a flag -v para criar um volume, seguido do nome do mesmo ( a flag *-v* serve para criar um volume ):
+- Para usar o Docker Host, no Terminal crie um container com o docker run, mas dessa vez utilize a flag -v para criar um volume, seguido do nome do mesmo ( a flag *-v* serve para criar um volume ):
     ```java
         docker run -v "/var/www" ubuntu
     ```
-    - No exemplo acima, criamos o volume /var/www, mas a que pasta no Docker Host ele faz referência? Para descobrir, podemos inspecionar o container, executando o comando docker inspect, passando o seu id para o mesmo, após o comando verifique a informação de saída na chave  *Mounts[... "Destination":"valor/aonde/sera/salvo/os/arquivos"]*:
+- No exemplo acima, criamos o volume /var/www, mas a que pasta no Docker Host ele faz referência? Para descobrir, podemos inspecionar o container, executando o comando docker inspect, passando o seu id para o mesmo, após o comando verifique a informação de saída na chave  *Mounts[... "Destination":"valor/aonde/sera/salvo/os/arquivos"]*:
     ```java
         docker inspect ID_DO_CONTAINER
     ```
 
-    EXEMPLO: Gerando um arquivo no container e salvando na sua area de trabalho
+**EXEMPLO: Gerando um arquivo no container e salvando na sua area de trabalho**
     ```java
         
         // docker run -it -v "/home/CIT/angelof/workspace/docker/angelo/alura-docker/files-container/:/var/www/" ubuntu
@@ -158,7 +158,7 @@
         // Altere o arquivo e salve ele
         root@abd0286c0083:/var/www# echo "Este é um arquivo de teste" > novo-arquivo.txt
     ```
-    
+
 - Executando uma simples aplicação em nodejs usando o Docker
     ```java
         // Especifique a pasta que contem sua aplicação em Node e informe usando o -w aonde ela sera executada.
