@@ -144,7 +144,6 @@
 **EXEMPLO: Gerando um arquivo no container e salvando na sua area de trabalho**
 
     ```java
-        
         // docker run -it -v "/home/CIT/angelof/workspace/docker/angelo/alura-docker/files-container/:/var/www/" ubuntu
         - docker run -it -v "C:\Users\NOME_USUARIO\Desktop:/var/www" ubuntu ( isso vai abrir o terminal do unbutu referente ao container criado )
 
