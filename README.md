@@ -260,6 +260,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
         docker build -f Dockerfile ( nome do seu arquivo )
 
         // -t ---> tag da imagem
+        // não esqueça de criar a imagem com o mesmo nome ou id do seu usuario do docker hub
         docker build -f Dockerfile -t angelozero/node
 
         // . ---> informando o caminho do arquivo Dockerfile
@@ -272,6 +273,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
     ```
 
 
+### Networking no Docker
 
 
 
