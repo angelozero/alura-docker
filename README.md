@@ -264,7 +264,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 *EXPOSE*
 
-```EXPOSE 3000```
+ - ```EXPOSE 3000```
 
 *RESUMO*
 
