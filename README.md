@@ -202,42 +202,50 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
     Geralmente, montamos as nossas imagens a partir de uma imagem já existente. Nós podemos criar uma imagem do zero, mas a prática de utilizar uma imagem como base e adicionar nela o que quisermos é mais comum. Para dizer a imagem-base que queremos, utilizamos a palavra FROM mais o nome da imagem.
 
 - Informamos de qual imagem queremos criar a nossa
+
 *FROM*
 
  - ```FROM node```
 
 - No momento da criação você pode informar qual versâo você deseja, se não informar por default o Docker vai buscar a latest
+
 *VERSAO*
 
 - ```FROM node:latest```
 
 - Criador da imagem
+
 *MAINTAINER*
 
  - ```MAINTAINER Angelo```
 
 - Para passar o projeto para dentro de uma pasta especifica usamos o comando COPY. Nele informamos o caminho para onde o projeto vai ficar. O " . "(ponto) informa que queremos copiar tudo que ha dentro do diretório.
+
 *COPY*
 
  - ```COPY . /var/www```
 
 - Para que a própria imagem instale as dependências utilize o comando RUN. ( OBS.: não se esqueça de excluir a pasta node_modules do projeto antes de criar a imagem )
+
 *RUN*
 
  - ```RUN npm install```
 
 - Toda imagem possui um comando que é executado quando a mesma inicia
+
 *ENTRYPOINT*
 
  - ```ENTRYPOINT npm start``` ou ```ENTRYPOINT ["npm", "start"]```
 
 
 - Para informar em qual diretório iremos trabalhar
+
 *WORKDIR*
 
  - ```WORKDIR /var/www```
 
 - Informando a porta que sera executado o projeto
+
 *EXPOSE*
 
  - ```EXPOSE 3000```
