@@ -264,6 +264,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 *EXPOSE*
 
+
     ```java
         EXPOSE 3000
     ```
