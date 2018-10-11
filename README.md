@@ -202,66 +202,42 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
     Geralmente, montamos as nossas imagens a partir de uma imagem já existente. Nós podemos criar uma imagem do zero, mas a prática de utilizar uma imagem como base e adicionar nela o que quisermos é mais comum. Para dizer a imagem-base que queremos, utilizamos a palavra FROM mais o nome da imagem.
 
 - Informamos de qual imagem queremos criar a nossa
-
 *FROM*
 
-    ```java
-        FROM node
-    ```
+ - ```FROM node```
 
 - No momento da criação você pode informar qual versâo você deseja, se não informar por default o Docker vai buscar a latest
-
 *VERSAO*
 
-    ```java
-        FROM node:latest
-    ```
+- ```FROM node:latest```
 
 - Criador da imagem
-
 *MAINTAINER*
 
-    ```java
-        MAINTAINER Angelo
-    ```
+ - ```MAINTAINER Angelo```
 
 - Para passar o projeto para dentro de uma pasta especifica usamos o comando COPY. Nele informamos o caminho para onde o projeto vai ficar. O " . "(ponto) informa que queremos copiar tudo que ha dentro do diretório.
-
 *COPY*
 
-    ```java
-        COPY . /var/www
-    ```
+ - ```COPY . /var/www```
 
 - Para que a própria imagem instale as dependências utilize o comando RUN. ( OBS.: não se esqueça de excluir a pasta node_modules do projeto antes de criar a imagem )
-
 *RUN*
 
-    ```java
-        RUN npm install
-    ```
+ - ```RUN npm install```
 
-- Toda imagem possui um comando que é executado quando a mesma inicia, ENTRYPOINT
-
+- Toda imagem possui um comando que é executado quando a mesma inicia
 *ENTRYPOINT*
 
-    ```java
-        ENTRYPOINT npm start
-        
-        ou
+ - ```ENTRYPOINT npm start``` ou ```ENTRYPOINT ["npm", "start"]```
 
-        ENTRYPOINT ["npm", "start"]
-    ```
 
 - Para informar em qual diretório iremos trabalhar
-
 *WORKDIR*
 
-    ```java
-        WORKDIR /var/www
-    ```
-- Informando a porta que sera executado o projeto
+ - ```WORKDIR /var/www```
 
+- Informando a porta que sera executado o projeto
 *EXPOSE*
 
  - ```EXPOSE 3000```
