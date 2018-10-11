@@ -252,16 +252,39 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
         EXPOSE 3000
     ```
 
+**RESUMO**
+- Dockerfile
+    ```java
+        FROM node:latest
+        MAINTAINER Angelo
+        ENV PORT=3000
+        COPY . /var/www
+        WORKDIR /var/www
+        RUN npm install
+        ENTRYPOINT npm start
+        EXPOSE $PORT
+    ```
 
-```java
-    FROM node:latest
-    MAINTAINER Douglas Quintanilha
-    COPY . /var/www
-    WORKDIR /var/www
-    RUN npm install
-    ENTRYPOINT npm start
-    EXPOSE 3000
-```
+- Comando para build da imagem
+    ```java
+        
+        // -f ---> arquivo docker para build
+        docker build -f Dockerfile ( nome do seu arquivo )
+
+        // -t ---> tag da imagem
+        docker build -f Dockerfile -t angelo/node
+
+        // . ---> informando o caminho do arquivo Dockerfile
+        docker build -f Dockerfile -t angelo/node .
+
+        // criando um container a partir da imagem criada
+        // -d para não travar o terminal
+        // -p para informar a porta
+        docker run -d -p 8080:3000 angelo/node
+
+
+
+    ```
 
 
 
