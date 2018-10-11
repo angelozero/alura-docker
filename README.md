@@ -203,7 +203,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Informamos de qual imagem queremos criar a nossa
 
-**FROM**
+*FROM*
 
     ```java
         FROM node
@@ -211,7 +211,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - No momento da criação você pode informar qual versâo você deseja, se não informar por default o Docker vai buscar a latest
 
-**VERSAO**
+*VERSAO*
 
     ```java
         FROM node:latest
@@ -219,7 +219,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Criador da imagem
 
-**MAINTAINER**
+*MAINTAINER*
 
     ```java
         MAINTAINER Angelo
@@ -227,7 +227,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Para passar o projeto para dentro de uma pasta especifica usamos o comando COPY. Nele informamos o caminho para onde o projeto vai ficar. O " . "(ponto) informa que queremos copiar tudo que ha dentro do diretório.
 
-**COPY**
+*COPY*
 
     ```java
         COPY . /var/www
@@ -235,7 +235,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Para que a própria imagem instale as dependências utilize o comando RUN. ( OBS.: não se esqueça de excluir a pasta node_modules do projeto antes de criar a imagem )
 
-**RUN**
+*RUN*
 
     ```java
         RUN npm install
@@ -243,7 +243,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Toda imagem possui um comando que é executado quando a mesma inicia, ENTRYPOINT
 
-**ENTRYPOINT**
+*ENTRYPOINT*
 
     ```java
         ENTRYPOINT npm start
@@ -255,20 +255,20 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Para informar em qual diretório iremos trabalhar
 
-**WORKDIR**
+*WORKDIR*
 
     ```java
         WORKDIR /var/www
     ```
 - Informando a porta que sera executado o projeto
 
-**EXPOSE**
+*EXPOSE*
 
     ```java
         EXPOSE 3000
     ```
 
-**RESUMO**
+*RESUMO*
 
 - Dockerfile
     ```java
@@ -289,15 +289,15 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
         docker build -f Dockerfile ( nome do seu arquivo )
 
         // -t ---> tag da imagem
-        docker build -f Dockerfile -t angelo/node
+        docker build -f Dockerfile -t angelozero/node
 
         // . ---> informando o caminho do arquivo Dockerfile
-        docker build -f Dockerfile -t angelo/node .
+        docker build -f Dockerfile -t angelozero/node .
 
         // criando um container a partir da imagem criada
         // -d para não travar o terminal
         // -p para informar a porta
-        docker run -d -p 8080:3000 angelo/node
+        docker run -d -p 8080:3000 angelozero/node
     ```
 
 
