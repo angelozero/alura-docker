@@ -207,7 +207,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - No momento da criação você pode informar qual versâo você deseja, se não informar por default o Docker vai buscar a latest --- *VERSAO*
 
-    - ```FROM node:latest```
+   - ```FROM node:latest```
 
 - Criador da imagem --- *MAINTAINER*
 
