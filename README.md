@@ -280,7 +280,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 --- 
 
-- Comandos relacionados à informações
+**Comandos relacionados à informações**
 
  - exibe a versão do docker que está instalada.
 ```docker version```                           
@@ -294,7 +294,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
  - exibe todos os containers, independente de estarem em execução ou não.
 ```docker ps -a```                                                              
 
-- Comandos relacionados à execução
+**Comandos relacionados à execução**
 
  - cria um container com a respectiva imagem passada como parâmetro.
 ```docker run NOME_DA_IMAGEM```                                                 
@@ -315,7 +315,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 ```docker run -it --name NOME_CONTAINER --network NOME_DA_REDE NOME_IMAGEM```   
 
 
-- Comandos relacionados à inicialização/interrupção
+**Comandos relacionados à inicialização/interrupção**
 
  - inicia o container com id em questão.
 ```docker start ID_CONTAINER```        
@@ -326,7 +326,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
  - interrompe o container com id em questão.                                        
 ```docker stop ID_CONTAINER```                                                  
 
-- Comandos relacionados à remoção
+**Comandos relacionados à remoção**
  
  - remove o container com id em questão. 
 ```docker rm ID_CONTAINER```    
@@ -337,7 +337,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
  - remove a imagem passada como parâmetro.
 ```docker rmi NOME_DA_IMAGEM```                                                 
 
-- Comandos relacionados à construção de Dockerfile
+**Comandos relacionados à construção de Dockerfile**
  
  - cria uma imagem a partir de um Dockerfile.
 ```docker build -f Dockerfile```  
@@ -348,7 +348,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
  - constrói e nomeia uma imagem não-oficial informando o caminho para o Dockerfile.
 ```docker build -f Dockerfile -t NOME_USUARIO/NOME_IMAGEM CAMINHO_DOCKERFILE``` 
 
-- Comandos relacionados ao Docker Hub
+**Comandos relacionados ao Docker Hub**
 
  - inicia o processo de login no Docker Hub.
 ```docker login```                          
@@ -359,7 +359,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
  - baixa a imagem desejada do Docker Hub.                                       
 ```docker pull NOME_USUARIO/NOME_IMAGEM```                                      
 
-- Comandos relacionados à rede
+**Comandos relacionados à rede**
  - mostra o ip atribuído ao container pelo docker (funciona apenas dentro do container).
 ```hostname -i```   
 
