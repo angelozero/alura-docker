@@ -387,7 +387,8 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 ```hostname -i```   
 
  - cria uma rede especificando o driver desejado.
- 
-```docker network create --driver bridge NOME_DA_REDE```                        
+
+```docker network create --driver bridge NOME_DA_REDE``` 
+                       
 ---
 
