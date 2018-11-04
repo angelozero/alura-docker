@@ -170,7 +170,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
     ```java
         // docker run -it -v "/home/CIT/angelof/workspace/docker/angelo/alura-docker/files-container/:/var/www/" ubuntu
-        - docker run -it -v "C:\Users\NOME_USUARIO\Desktop:/var/www" ubuntu ( isso vai abrir o terminal do unbutu referente ao container criado )
+        - docker run -it -v "C:\Users\NOME_USUARIO\Desktop:/var/www" ubuntu ( isso vai abrir o terminal do ubuntu referente ao container criado )
 
         // Acesse a pasta var/www/
         - root@abd0286c0083:/# cd /var/www/
@@ -198,7 +198,110 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 ---
 
 ### Criando um Dockerfile
+- Primeiro criamos um arquivo Dockerfile, que nada mais é do que um arquivo de texto. Ele pode ter qualquer nome, porém nesse caso ele também deve possuir a extensão .dockerfile, por exemplo node.dockerfile.
+    Geralmente, montamos as nossas imagens a partir de uma imagem já existente. Nós podemos criar uma imagem do zero, mas a prática de utilizar uma imagem como base e adicionar nela o que quisermos é mais comum. Para dizer a imagem-base que queremos, utilizamos a palavra FROM mais o nome da imagem.
 
+- Informamos de qual imagem queremos criar a nossa --- *FROM*
+
+ ```FROM node```
+
+- No momento da criação você pode informar qual versâo você deseja, se não informar por default o Docker vai buscar a latest
+
+   - *VERSAO*
+   - ```FROM node:latest```
+
+- Criador da imagem --- *MAINTAINER*
+
+    - ```MAINTAINER Angelo```
+
+- Para passar o projeto para dentro de uma pasta especifica usamos o comando COPY. Nele informamos o caminho para onde o projeto vai ficar. O " . "(ponto) informa que queremos copiar tudo que ha dentro do diretório. 
+
+    - *COPY*
+    - ```COPY . /var/www```
+
+- Para que a própria imagem instale as dependências utilize o comando RUN. ( OBS.: não se esqueça de excluir a pasta node_modules do projeto antes de criar a imagem )
+
+    - *RUN*
+    - ```RUN npm install```
+
+- Toda imagem possui um comando que é executado quando a mesma inicia 
+
+    - *ENTRYPOINT*
+    - ```ENTRYPOINT npm start``` ou ```ENTRYPOINT ["npm", "start"]```
+
+
+- Para informar em qual diretório iremos trabalhar 
+    - *WORKDIR*
+    - ```WORKDIR /var/www```
+
+- Informando a porta que sera executado o projeto 
+
+    - *EXPOSE*
+    - ```EXPOSE 3000```
+
+### RESUMO
+
+- Dockerfile
+    ```java
+        FROM node:latest
+        MAINTAINER Angelo
+        ENV PORT=3000
+        COPY . /var/www
+        WORKDIR /var/www
+        RUN npm install
+        ENTRYPOINT npm start
+        EXPOSE $PORT
+    ```
+
+- Comando para build da imagem
+    ```java
+        
+        // -f ---> arquivo docker para build
+        docker build -f Dockerfile ( nome do seu arquivo )
+
+        // -t ---> tag da imagem
+        // não esqueça de criar a imagem com o mesmo nome ou id do seu usuario do docker hub
+        docker build -f Dockerfile -t angelozero/node
+
+        // . ---> informando o caminho do arquivo Dockerfile
+        docker build -f Dockerfile -t angelozero/node .
+
+        // criando um container a partir da imagem criada
+        // -d para não travar o terminal
+        // -p para informar a porta
+        docker run -d -p 8080:3000 angelozero/node
+    ```
+
+
+### Networking no Docker
+
+- No Docker, por padrão, já existe uma default network. Isso significa que, quando criamos os nossos containers, por padrão eles funcionam na mesma rede:
+
+!(Docker)[https://s3.amazonaws.com/caelum-online-public/646-docker/05/imagens/rede-docker.png]
+
+- Para testarmos a comunicação entre um container e outro, podemos executar dois containers com ubuntu e rodar o comando ping apontando um container para o outro. No primeiro contanier com ubuntu você consegue verificar que seu ip ( usando o comando ```hostname -i``` ). No segundo o mesmo comando. Talvez retorne algo do tipo 172.17.0.2 e 172.17.0.3. Agora em um dos terminais ( container do ubuntu ) instale o ip utils para executar o ping ```apt-get update && apt-get install iputils-ping``` . Apos a instalação execute ```ping IP_DO_OUTRO_CONTAINER```.
+
+
+### Criando a nossa própria rede do Docker e executando uma comunicação entre containers utilizando os seus nomes
+- Primeiro execute o comando ```docker network create --driver bridge NOME-QUALQUER-DA-SUA-REDE```. Para o padrão em ter uma nuvem e os containers compartilhando a rede, devemos utilizar o driver de bridge. Informe o driver através do ```--driver``` e após isso nós dizemos o nome da rede ```NOME-QUALQUER-DA-SUA-REDE```. 
+
+- Agora, quando criamos um container, ao invés de deixarmos ele ser associado à rede padrão do Docker, atrelamos à rede que acabamos de criar, através da flag ```--network```.
+
+```docker run -it --name MEU-CONTAINER-UBUNTU-1 --network MINHA-REDE-QUALQUER ubuntu```
+
+- Agora, se executarmos o comando ```docker inspect MEU-CONTAINER-UBUNTU```, podemos ver em NetworkSettings o container está na ```MINHA-REDE-QUALQUER```. E para testar a comunicação entre os containers na nossa rede, vamos abrir outro terminal e criar um segundo container:
+
+
+```docker run -it --name MEU-CONTAINER-UBUNTU-2 --network MINHA-REDE-QUALQUER ubuntu```
+
+
+- Agora, no MEU-CONTAINER-UBUNTU-2, instalamos o ping e testamos a comunicação com o ```MEU-CONTAINER-UBUNTU-1```:
 
 ---
 
+### Docker Compose
+!(Docker)[https://s3.amazonaws.com/caelum-online-public/646-docker/06/imagens/funcionamento-aplicacoes.png]
+
+ - Ao invés de subir várops containers na mão, o que podemos é utilizar uma tecnologia aliada do Docker, chamada Docker Compose, feito para nos auxiliar a orquestrar melhor múltiplos containers. Ele funciona seguindo um arquivo de texto YAML (extensão .yml), e nele nós descrevemos tudo o que queremos que aconteça para subir a nossa aplicação, todo o nosso processo de build, isto é, subir o banco, os containers das aplicações, etc.
+
+---
