@@ -281,6 +281,7 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Para testarmos a comunicação entre um container e outro, podemos executar dois containers com ubuntu e rodar o comando ping apontando um container para o outro. No primeiro contanier com ubuntu você consegue verificar que seu ip ( usando o comando ```hostname -i``` ). No segundo o mesmo comando. Talvez retorne algo do tipo 172.17.0.2 e 172.17.0.3. Agora em um dos terminais ( container do ubuntu ) instale o ip utils para executar o ping ```apt-get update && apt-get install iputils-ping``` . Apos a instalação execute ```ping IP_DO_OUTRO_CONTAINER```.
 
+--- 
 
 ### Criando a nossa própria rede do Docker e executando uma comunicação entre containers utilizando os seus nomes
 - Primeiro execute o comando ```docker network create --driver bridge NOME-QUALQUER-DA-SUA-REDE```. Para o padrão em ter uma nuvem e os containers compartilhando a rede, devemos utilizar o driver de bridge. Informe o driver através do ```--driver``` e após isso nós dizemos o nome da rede ```NOME-QUALQUER-DA-SUA-REDE```. 
@@ -297,6 +298,118 @@ O Docker nada mais é do que uma coleção de tecnologias para facilitar o deplo
 
 - Agora, no MEU-CONTAINER-UBUNTU-2, instalamos o ping e testamos a comunicação com o ```MEU-CONTAINER-UBUNTU-1```:
 
+---
+
+**Comandos relacionados à informações**
+
+ - exibe a versão do docker que está instalada.
+
+```docker version```                           
+
+ - retorna diversas informações sobre o container. 
+
+```docker inspect ID_CONTAINER```              
+
+ - exibe todos os containers em execução no momento.
+
+```docker ps```                                                                 
+
+ - exibe todos os containers, independente de estarem em execução ou não.
+
+```docker ps -a```                                                              
+
+**Comandos relacionados à execução**
+
+ - cria um container com a respectiva imagem passada como parâmetro.
+
+```docker run NOME_DA_IMAGEM```                                                 
+
+ - conecta o terminal que estamos utilizando com o do container.
+
+```docker run -it NOME_DA_IMAGEM```                                             
+
+ - ao executar, dá um nome ao container.
+
+```docker run -d -P --name NOME dockersamples/static-site```                    
+
+ - define uma porta específica para ser atribuída à porta 80 do container, neste caso 12345.
+
+```docker run -d -p 12345:80 dockersamples/static-site```                       
+
+ - cria um volume no respectivo caminho do container.
+
+```docker run -v "CAMINHO_VOLUME" NOME_DA_IMAGEM```                             
+
+ - cria um container especificando seu nome e qual rede deverá ser usada.
+
+```docker run -it --name NOME_CONTAINER --network NOME_DA_REDE NOME_IMAGEM```   
+
+
+**Comandos relacionados à inicialização/interrupção**
+
+ - inicia o container com id em questão.
+
+```docker start ID_CONTAINER```        
+
+ - inicia o container com id em questão e integra os terminais, além de permitir interação entre ambos.  
+
+```docker start -a -i ID_CONTAINER```   
+
+ - interrompe o container com id em questão.  
+
+```docker stop ID_CONTAINER```                                                  
+
+**Comandos relacionados à remoção**
+ 
+ - remove o container com id em questão. 
+
+```docker rm ID_CONTAINER```    
+ 
+ - remove todos os containers que estão parados. 
+
+```docker container prune```                    
+ 
+ - remove a imagem passada como parâmetro.
+
+```docker rmi NOME_DA_IMAGEM```                                                 
+
+**Comandos relacionados à construção de Dockerfile**
+ 
+ - cria uma imagem a partir de um Dockerfile.
+
+```docker build -f Dockerfile```  
+ 
+ - constrói e nomeia uma imagem não-oficial.     
+
+```docker build -f Dockerfile -t NOME_USUARIO/NOME_IMAGEM```
+ 
+ - constrói e nomeia uma imagem não-oficial informando o caminho para o Dockerfile.
+
+```docker build -f Dockerfile -t NOME_USUARIO/NOME_IMAGEM CAMINHO_DOCKERFILE``` 
+
+**Comandos relacionados ao Docker Hub**
+
+ - inicia o processo de login no Docker Hub.
+
+```docker login```                          
+
+ - envia a imagem criada para o Docker Hub.
+
+```docker push NOME_USUARIO/NOME_IMAGEM```
+
+ - baixa a imagem desejada do Docker Hub.   
+
+```docker pull NOME_USUARIO/NOME_IMAGEM```                                      
+
+**Comandos relacionados à rede**
+ - mostra o ip atribuído ao container pelo docker (funciona apenas dentro do container).
+
+```hostname -i```   
+
+ - cria uma rede especificando o driver desejado.
+
+```docker network create --driver bridge NOME_DA_REDE``` 
+                       
 ---
 
 ### Docker Compose
